@@ -1,4 +1,4 @@
-From tomcat:8-jre8 
-MAINTAINER "Vcube"
-COPY ./taxi-booking/target/taxi-booking-1.0.1.war /usr/local/tomcat/webapps
-EXPOSE 8080
+FROM tomcat:8.0-alpine
+MAINTAINER "sai"
+COPY ./taxi-booking-1.0.1.war /usr/local/tomcat/webapps
+CMD ["catalina.sh", "run"]
