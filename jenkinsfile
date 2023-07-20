@@ -13,12 +13,12 @@ pipeline{
         }
         stage('sonar'){
             steps{
-                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=testingthecode -Dsonar.host.url=http://52.91.163.11:9000 -Dsonar.login=sqp_d3b8c532cce6035c74411005b3f9f16c79f78c85'
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=testingthecode -Dsonar.host.url=http://34.238.40.167:9000 -Dsonar.login=sqp_d3b8c532cce6035c74411005b3f9f16c79f78c85'
             }
         }
         stage('nexus'){
             steps{
-                nexusArtifactUploader artifacts: [[artifactId: 'maven-project', classifier: '', file: '/var/lib/jenkins/workspace/dockerimagepush/taxi-booking/target/taxi-booking-1.0.1.war', type: 'war']], credentialsId: 'nexus', groupId: 'com.example.maven-project', nexusUrl: '34.205.20.44:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
+                nexusArtifactUploader artifacts: [[artifactId: 'maven-project', classifier: '', file: '/var/lib/jenkins/workspace/dockerimagepush/taxi-booking/target/taxi-booking-1.0.1.war', type: 'war']], credentialsId: 'nexus', groupId: 'com.example.maven-project', nexusUrl: '54.205.14.203:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
             }
         }
         stage('docker build & push'){
@@ -26,8 +26,8 @@ pipeline{
             {
                 script{
                     withDockerRegistry(credentialsId: 'docker') {
-                        sh 'docker build -t 9573598280/myimage4:v1.0.12 .'
-                        sh 'docker push 9573598280/myimage4:v1.0.12'
+                        sh 'docker build -t 9573598280/myimage5:v1.0.12 .'
+                        sh 'docker push 9573598280/myimage5:v1.0.12'
                     }
                 }
             }
