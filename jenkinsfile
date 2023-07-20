@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('clone'){
             steps{
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Kolla5233/taxi-booking.git']])
+                checkout scmGit(branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Kolla5233/taxi-booking.git']])
             }
         }
         stage('build'){
