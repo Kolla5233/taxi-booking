@@ -27,7 +27,6 @@ pipeline{
                 script{
                     withDockerRegistry(credentialsId: 'docker') {
                         sh 'docker build -t 9573598280/myimage3:v1.0.12 .'
-                        sh 'docker push 9573598280/myimage3:v1.0.12'
                     }
                 }
             }
